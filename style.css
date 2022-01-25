@@ -82,6 +82,18 @@ header {
     border-top: 1px solid #e6e6e6;
     /* border: 1px solid grey; */
     height: 60px;
+    /* transition: 0.1s; */
+}
+
+/* .todos__item * {
+    transition: 0.1s;
+} */
+
+.todos__item.hide {
+    visibility: hidden;
+    height: 0;
+    /* transition: 0.1s; */
+    
 }
 
 .todos__toggle {
@@ -94,6 +106,12 @@ header {
     border: 1px solid grey;
     /* border: 1px solid red; */
     margin: 10px;
+}
+
+.todos__toggle:checked + .todos__title {
+    text-decoration: line-through;
+    color: grey;
+    opacity: 0.5;
 }
 
 .todos__item button {
@@ -109,6 +127,7 @@ header {
 }
 
 .todos__title {
+    font-size: 20px;
     flex-grow: 1;
     word-break: break-all;
     padding: 15px 15px 15px 60px;
