@@ -24,3 +24,5 @@ newTodo.addEventListener('keydown', function(event){
 
 
 let todosList = document.querySelector('.todos-list')
+
+function render
