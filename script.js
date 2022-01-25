@@ -4,6 +4,8 @@ let newTodo = document.querySelector('.todo__input');
 let todosList = document.querySelector('.todos-list');
 let storage = JSON.parse(localStorage.getItem('todos-list')) || [];
 let todoCount = document.querySelector('.todo-count__number');
+let tasksSection = document.querySelector('.tasks');
+let footer = document.querySelector('.footer');
 
 
 // CREATE NEW ELEMENT
@@ -50,23 +52,11 @@ function sortTasks(sortType, callback) {
         return activeTasks
 }
 
-
-//CHANGE TODO COUNT
-function changeTodoCount(){
-
-        function collectElements(element, collector){
-                collector.push(element) 
-        }
-       
-        let activeTasks = sortTasks('active', collectElements);
-
-        todoCount.textContent = activeTasks.length;
-
-        let todoCountName = document.querySelector('.todo-count__name')
-        if(activeTasks.length > 1) {
-                todoCountName.textContent = 'items'
-        } else{
-                todoCountName.textContent = 'item'
+//HIDE TASKS SECTION IF TODOS ARE ABSENT
+function hideTasksSection(){
+        if(!document.querySelector('.todos__item') ){
+                tasksSection.className = 'tasks'
+                footer.className = 'footer'
         }
 }
 
@@ -86,9 +76,33 @@ newTodo.addEventListener('keydown', function(event){
 
         newTodo.value = '';
 
+        tasksSection.className = 'tasks active'
+        footer.className = 'footer active'
 
 	}  
 });
+
+
+//CHANGE TODO COUNT
+function changeTodoCount(){
+
+        function collectElements(element, collector){
+                collector.push(element) 
+        }
+       
+        let activeTasks = sortTasks('active', collectElements);
+
+        todoCount.textContent = activeTasks.length;
+
+        let todoCountName = document.querySelector('.todo-count__name')
+        if(activeTasks.length > 1) {
+                todoCountName.textContent = 'items'
+               
+        } else{
+                todoCountName.textContent = 'item'
+        }
+}
+
 
 
 // EVENT DELETE TODO ITEM
@@ -97,7 +111,7 @@ todosList.addEventListener('click', event => {
                 event.target.closest('.todos__item').remove()
         }
         changeTodoCount()
-       
+        hideTasksSection()
 })
 
 // INDICATE CHOSEN SORT BUTTON
@@ -107,7 +121,7 @@ sortBtns.addEventListener('click', event => {
         allSortBtns.forEach(item => {
                 item.classList.remove("selected")
         })
-        console.log(event.target)
+        // console.log(event.target)
         event.target.closest('li').classList.add("selected")
 })
 
@@ -144,6 +158,17 @@ sortAllBtn.addEventListener('click', event => {
         let allTasks = document.querySelectorAll('.todos__item')
         allTasks.forEach(element => {
                 element.classList.remove('hide')
+        })
+})
+
+// EVENT SWITCH ALL CHECKBOX TO TRUE
+let checkAllBtn = document.querySelector('.check-all');
+checkAllBtn.addEventListener('click', event => {
+        console.log(event.target)
+        event.target.classList.toggle('active')
+        let allTasks = document.querySelectorAll('.todos__item')
+        allTasks.forEach(item => {
+                item.querySelector('.todos__toggle').checked = true;
         })
 })
 

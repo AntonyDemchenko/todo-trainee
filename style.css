@@ -59,13 +59,43 @@ header {
     font-style: italic;
 }
 
-.tasks {
+.tasks.active{
     display: flex;
     width: 100%;
 }
 
+.tasks {
+    display: none;
+    position: relative;
+}
+
 .todos-tasks {
     width: 100%;
+   
+}
+
+.check-all {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -70px;
+    margin: 10px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background-color: #fff;
+
+}
+
+.chek-all__arrow {
+    transform: rotate(90deg);
+    font-size: 20px;
+    color: #3333;
+}
+
+.chek-all__arrow.active {
+    color: rgba(0, 0, 0, 0.604) ;
 }
 
 .todos-list {
@@ -151,7 +181,7 @@ header {
  visibility: inherit;
 }
 
-footer {
+footer.active {
     width: 100%;
     display: flex;
     align-items: center;
@@ -161,6 +191,10 @@ footer {
     height: 20px;
     text-align: center;
     border-top: 1px solid #e6e6e6;
+}
+
+.footer {
+    display: none;
 }
 
 .sort-btns {
