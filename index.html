@@ -1,71 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TODO-APP</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="normalize.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="normalize.css" />
+  </head>
+  <body>
     <div class="container">
-        
-        <header>
-            <h1 class="main-title">todos</h1>
-            <input type="text" class="todo__input" placeholder="What needs to be done?">
-        </header>
+      <header>
+        <h1 class="main-title">todos</h1>
+        <input
+          type="text"
+          class="todo__input"
+          placeholder="What needs to be done?"
+        />
+      </header>
 
-        <section class="tasks">
+      <section class="tasks">
+        <button class="check-all">
+          <p class="chek-all__arrow">&#10095;</p>
+        </button>
 
-            <button class="check-all">
-                <p class="chek-all__arrow">&#10095;</p> 
-            </button>
-
-            <div class="todos-tasks">
-                <ul class="todos-list">
-                    <!-- <li class="todos__item" >
+        <div class="todos-tasks">
+          <ul class="todos-list">
+            <!-- <li class="todos__item" >
                         <input class="todos__toggle" type="checkbox"></input>
                         <p class="todos__title">qqq11111111111111</p>
                         <button class="todos__delete">
                             &#215;
                         </button>
                     </li> -->
-                </ul>
-            </div>
-        </section>
+          </ul>
+        </div>
+      </section>
 
-        <footer class="footer">
-            <span class="todo-count">
-                <span class="todo-count__number">0</span> 
-                <span class="todo-count__name">item</span> 
-                left
-            </span>
-            <ul class="sort-btns">
-                <li class="all selected">
-                    <button>
-                        All
-                    </button>
-                </li>
-                <li class="active">
-                    <button>
-                        Active
-                    </button>
-                </li>
-                <li class="completed">
-                    <button>
-                        Completed
-                    </button>
-                </li>
-            </ul>
-            <button class="delete-btn">
-                Clear completed
-            </button>
-        </footer>
-           
-
+      <footer class="footer">
+        <span class="todo-count">
+          <span class="todo-count__number">0</span>
+          <span class="todo-count__name">item</span>
+          left
+        </span>
+        <ul class="filter-btns">
+          <li class="all selected">
+            <button>All</button>
+          </li>
+          <li class="active">
+            <button>Active</button>
+          </li>
+          <li class="completed">
+            <button>Completed</button>
+          </li>
+        </ul>
+        <button class="delete-checked">Clear completed</button>
+      </footer>
     </div>
+    <script src="https://unpkg.com/uuid@latest/dist/umd/uuidv4.min.js"></script>
     <script src="script.js"></script>
-    
-</body>
+  </body>
 </html>
