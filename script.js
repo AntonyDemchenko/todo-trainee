@@ -6,6 +6,7 @@ let storage = JSON.parse(localStorage.getItem('todos-list')) || [];
 let todoCount = document.querySelector('.todo-count__number');
 let tasksSection = document.querySelector('.tasks');
 let footer = document.querySelector('.footer');
+let checkAllBtn = document.querySelector('.check-all');
 
 
 // CREATE NEW ELEMENT
@@ -97,9 +98,14 @@ function changeTodoCount(){
         let todoCountName = document.querySelector('.todo-count__name')
         if(activeTasks.length > 1) {
                 todoCountName.textContent = 'items'
+                checkAllBtn.classList.remove('active')
                
-        } else{
+        } else if(activeTasks.length == 0){
+                checkAllBtn.classList.toggle('active')
+        }
+        else{
                 todoCountName.textContent = 'item'
+                checkAllBtn.classList.remove('active')
         }
 }
 
@@ -161,16 +167,51 @@ sortAllBtn.addEventListener('click', event => {
         })
 })
 
+
 // EVENT SWITCH ALL CHECKBOX TO TRUE
-let checkAllBtn = document.querySelector('.check-all');
 checkAllBtn.addEventListener('click', event => {
-        console.log(event.target)
-        event.target.classList.toggle('active')
+        checkAllBtn.classList.toggle('active')
         let allTasks = document.querySelectorAll('.todos__item')
-        allTasks.forEach(item => {
-                item.querySelector('.todos__toggle').checked = true;
-        })
+
+        if([...allTasks].every(item => item.querySelector('.todos__toggle').checked == true)){
+                allTasks.forEach(item => {
+                        item.querySelector('.todos__toggle').checked = false;
+                })
+        } else {
+                allTasks.forEach(item => {
+                        item.querySelector('.todos__toggle').checked = true;
+                })
+                checkAllBtn.classList.toggle('active')
+        }
+        
+        changeTodoCount()
+        sortBySortMode()
 })
+
+// SORT ITEMS AFTER CLICK ON CHECKBOX BY CHOSEN SORT MODE
+todosList.addEventListener('click', event => {
+        if( event.target.className == "todos__toggle"){
+                sortBySortMode()
+        }
+       
+})
+
+// SORT BY CHOSEN SORT MODE
+function sortBySortMode(){
+        let sortType = document.querySelector('.sort-btns .selected')
+        if (sortType.classList.contains('active')){
+                sortActiveBtn.click()
+        } else if(sortType.classList.contains('completed')) {
+                sortCompletedBtn.click()
+        }
+}
+
+
+
+
+
+
+
 
 
 

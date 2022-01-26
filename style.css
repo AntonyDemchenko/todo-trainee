@@ -88,15 +88,19 @@ header {
 
 }
 
+.check-all.active p{
+    color: rgba(0, 0, 0, 0.604) !important;
+}
+
 .chek-all__arrow {
     transform: rotate(90deg);
     font-size: 20px;
     color: #3333;
 }
 
-.chek-all__arrow.active {
+/* .chek-all__arrow.active {
     color: rgba(0, 0, 0, 0.604) ;
-}
+} */
 
 .todos-list {
     width: 100%;
